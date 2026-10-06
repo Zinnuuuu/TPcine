@@ -1,0 +1,8 @@
+.barra {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 1rem 1.25rem;
+}
+.marca { font-size: 1.5rem; font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+nav { display: flex; align-items: center; gap: 1.25rem; }
+nav a { text-decoration: none; font-weight: 600; }
+.cta { background: var(--oro); color: var(--tinta); padding: .45rem .9rem; border-radius: 999px; }

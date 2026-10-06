@@ -1,0 +1,20 @@
+:host { display: block; }
+.contenedor { max-width: 1200px; margin: 0 auto; padding: 1rem 1.25rem 4rem; }
+.estado { text-align: center; color: var(--texto-suave); padding: 3rem 0; }
+
+h1 { margin: 1rem 0 1.5rem; font-size: clamp(2.4rem, 7vw, 4.5rem); }
+h2 { margin: 3.5rem 0 1rem; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+
+.top-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+@media (min-width: 900px) {
+    .top-grid { grid-template-columns: 1.3fr 1fr 1fr; align-items: start; }
+}
+
+.filtros { display: flex; flex-direction: column; gap: .9rem; }
+.buscador input { width: 100%; max-width: 480px; padding: .75rem 1rem; font-size: 1.05rem; border-radius: 999px; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip { background: transparent; color: var(--texto); border: 1.5px solid var(--borde); border-radius: 999px; padding: .35rem .9rem; font-weight: 600; }
+.chip.activo { background: var(--oro); border-color: var(--oro); color: var(--tinta); }
+.cuenta { margin: 1rem 0; color: var(--texto-suave); font-size: .9rem; }
+
+.grilla { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }

@@ -1,0 +1,15 @@
+<button (click)="nueva()"> Nueva película</button>
+<table>
+    <tr><th>Nombre</th><th>Duración</th><th>Clasificación</th><th></th></tr>
+    @for (p of peliculas(); track p.id) {
+    <tr>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.duracion_min }} min</td>
+        <td>{{ p.clasificacion_edad }}</td>
+        <td>
+        <button (click)="editar(p.id)">Editar</button>
+        <button (click)="eliminar(p.id)">Eliminar</button>
+        </td>
+    </tr>
+    }
+</table>

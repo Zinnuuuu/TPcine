@@ -1,0 +1,23 @@
+:host { display: block; }
+.ticket { display: flex; flex-direction: column; height: 100%; background: var(--papel); color: var(--tinta); border-radius: 14px; overflow: hidden; }
+
+.poster { position: relative; aspect-ratio: 2 / 3; background: #CFC6F5; display: grid; place-items: center; }
+.poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.inicial { font-size: 6rem; font-weight: 800; opacity: .3; }
+.puesto { position: absolute; top: .6rem; left: .6rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--oro); font-size: 1.4rem; font-weight: 800; }
+.edad { position: absolute; top: .6rem; right: .6rem; background: var(--fondo); color: var(--texto); font-size: .8rem; font-weight: 700; padding: .15rem .5rem; border-radius: 6px; }
+
+/* El troquel: corte punteado con muescas laterales */
+.talon { position: relative; flex: 1; display: flex; flex-direction: column; gap: .4rem; padding: 1.2rem 1rem 1rem; border-top: 2px dashed rgba(27, 19, 64, .35); }
+.talon::before, .talon::after { content: ''; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; background: var(--fondo); }
+.talon::before { left: -10px; }
+.talon::after { right: -10px; }
+
+h3 { margin: 0; font-size: 1.2rem; }
+.destacada h3 { font-size: 1.5rem; }
+.meta { display: flex; flex-wrap: wrap; gap: .25rem .75rem; margin: 0; font-size: .85rem; color: #4A3F86; }
+.sinopsis { margin: .25rem 0 0; font-size: .95rem; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.rating { margin: auto 0 0; padding-top: .4rem; font-weight: 700; }
+.rating small { font-weight: 400; color: #4A3F86; }
+.estrella { color: #E08E00; }
+.vacio { font-weight: 400; font-size: .85rem; color: #4A3F86; }

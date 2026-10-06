@@ -1,0 +1,46 @@
+
+:root {
+    --fondo: #1B1340;
+    --fondo-2: #281C5C;
+    --papel: #EDE8FF;
+    --tinta: #1B1340;
+    --texto: #F1EDFF;
+    --texto-suave: #B9B0E0;
+    --rojo: #E63946;
+    --oro: #FFB703;
+    --borde: rgba(241, 237, 255, .2);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+h1, h2, h3 { font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Controles base: mantienen legibles las pantallas de admin y formularios */
+input, select, textarea, button { font: inherit; }
+input, select, textarea {
+    background: var(--fondo-2); color: var(--texto);
+    border: 1px solid var(--borde); border-radius: 8px; padding: .55rem .75rem;
+}
+button {
+    background: var(--rojo); color: #fff; border: 0; border-radius: 8px;
+    padding: .55rem 1rem; font-weight: 700; cursor: pointer;
+}
+button:disabled { opacity: .5; cursor: not-allowed; }
+form { display: flex; flex-direction: column; gap: .75rem; max-width: 520px; margin: 2rem auto; padding: 0 1.25rem; }
+fieldset { border: 1px solid var(--borde); border-radius: 8px; }
+table { border-collapse: collapse; margin: 1.5rem auto; width: min(100% - 2.5rem, 900px); }
+th, td { text-align: left; padding: .6rem .75rem; border-bottom: 1px solid var(--borde); }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

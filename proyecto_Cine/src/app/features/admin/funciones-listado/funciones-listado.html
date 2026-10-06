@@ -1,0 +1,12 @@
+<button (click)="nueva()">+ Nueva función</button>
+<table>
+    <tr><th>Película</th><th>Sala</th><th>Horario</th><th>Formato</th></tr>
+    @for (f of funciones(); track f.id) {
+        <tr>
+        <td>{{ f.Peliculas.nombre }}</td>
+        <td>{{ f.Salas.nombre }}</td>
+        <td>{{ f.horario | date:'short' }}</td>
+        <td>{{ f.formato }}</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,14 @@
+<form [formGroup]="formulario" (ngSubmit)="registrar()">
+    <input formControlName="email" placeholder="Email" type="email" />
+    <input formControlName="password" placeholder="Password" type="password" />
+    <input formControlName="nombre" placeholder="Nombre" />
+    <input formControlName="apellido" placeholder="Apellido" />
+    <input formControlName="fechaNacimiento" type="date" />
+    <input formControlName="tipoSangre" placeholder="Tipo de Sangre" />
+    <input formControlName="colorOjos" placeholder="Color de Ojos" />
+    <input formControlName="diasVacaciones" placeholder="Días de Vacaciones" type="number" />
+    <button type="submit">Crear Cuenta</button>
+    @if (error) { 
+        <p>{{ error }}</p> 
+    }
+</form>

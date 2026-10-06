@@ -1,0 +1,24 @@
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+    <input formControlName="nombre" placeholder="Nombre" />
+    <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
+    <input formControlName="duracion_min" type="number" placeholder="Duración (min)" />
+    <select formControlName="clasificacion_edad">
+        <option value="sin restricción">Sin restricción</option>
+        <option value="+13">+13</option>
+        <option value="+18">+18</option>
+    </select>
+    <input formControlName="imagen_url" placeholder="URL de la imagen" />
+
+    <fieldset>
+        <legend>Géneros</legend>
+        @for (g of generosDisponibles; track g.id) {
+        <label>
+            <input type="checkbox"
+            [checked]="generosSeleccionados.includes(g.id)"
+            (change)="toggleGenero(g.id, $any($event.target).checked)" />
+            {{ g.nombre }}
+        </label>
+        }
+    </fieldset>
+    <button type="submit">Guardar</button>
+    </form>

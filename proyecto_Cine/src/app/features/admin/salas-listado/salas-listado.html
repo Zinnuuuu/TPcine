@@ -1,0 +1,10 @@
+<button (click)="nueva()">+ Nueva sala</button>
+<table>
+    <tr><th>Nombre</th><th></th></tr>
+    @for (s of salas(); track s.id) {
+        <tr>
+        <td>{{s.nombre}}</td>
+        <td><button (click)="eliminar(s.id)">Eliminar</button></td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,47 @@
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+    <select formControlName="pelicula_id">
+        <option value="" disabled>Elegí una película</option>
+        @for (p of peliculas(); track p.id) {
+        <option [value]="p.id">{{ p.nombre }} ({{ p.duracion_min }} min)</option>
+        }
+    </select>
+
+    <select formControlName="formato">
+        <option value="2D">2D</option><option value="3D">3D</option>
+        <option value="4D">4D</option><option value="5D">5D</option>
+    </select>
+    <select formControlName="idioma">
+        <option value="Castellano">Castellano</option>
+        <option value="Subtitulada">Subtitulada</option>
+    </select>
+    <input formControlName="precio" type="number" placeholder="Precio" />
+
+    <fieldset>
+        <legend>Preventa (opcional)</legend>
+        <input formControlName="precio_preventa" type="number" placeholder="Precio de preventa" />
+        <input formControlName="fecha_inicio_preventa" type="date" placeholder="Inicio de preventa" />
+    </fieldset>
+
+    <fieldset>
+        <legend>Horarios</legend>
+        <input formControlName="nuevaFecha" type="date" />
+        <input formControlName="nuevaHora" type="time" />
+        <button type="button" (click)="agregarHorario()">+ Agregar horario</button>
+
+        <ul>
+        @for (h of horariosAgregados(); track h) {
+            <li>{{ h }} <button type="button" (click)="quitarHorario(h)">Quitar</button></li>
+        }
+        </ul>
+    </fieldset>
+
+    <button type="submit">Crear funciones</button>
+
+    @if (resultados.length > 0) {
+        <ul>
+        @for (r of resultados; track r.horario) {
+            <li>{{ r.horario }}: {{ r.asignada ? 'Sala asignada ✓' : 'Sin sala disponible ✗' }}</li>
+        }
+        </ul>
+    }
+</form>

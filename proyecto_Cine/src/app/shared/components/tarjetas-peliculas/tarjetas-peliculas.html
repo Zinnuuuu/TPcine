@@ -1,0 +1,28 @@
+@let p = pelicula();
+<article class="ticket" [class.destacada]="destacada()">
+    <div class="poster">
+        @if (p.imagen_url && !imagenRota()) {
+        <img [src]="p.imagen_url" [alt]="'Póster de ' + p.nombre" loading="lazy" (error)="imagenRota.set(true)" />
+        } @else {
+        <span class="inicial" aria-hidden="true">{{ p.nombre.charAt(0) }}</span>
+        }
+        @if (puesto(); as n) { <span class="puesto" [attr.aria-label]="'Puesto ' + n">{{ n }}</span> }
+        @if (p.clasificacion_edad !== 'sin restricción') { <span class="edad">{{ p.clasificacion_edad }}</span> }
+    </div>
+
+    <div class="talon">
+        <h3>{{ p.nombre }}</h3>
+        <p class="meta">
+        @for (g of p.generos; track g.id) { <span>{{ g.nombre }}</span> }
+        <span>{{ p.duracion_min }} min</span>
+        </p>
+        @if (destacada()) { <p class="sinopsis">{{ p.descripcion }}</p> }
+        @if (rating(); as r) {
+        <p class="rating" [attr.aria-label]="r.promedio + ' de 5 estrellas, ' + r.cantidad + ' reseñas'">
+            <span class="estrella" aria-hidden="true">★</span> {{ r.promedio.toFixed(1) }} <small>({{ r.cantidad }})</small>
+        </p>
+        } @else {
+        <p class="rating vacio">Sin reseñas todavía</p>
+        }
+    </div>
+</article>

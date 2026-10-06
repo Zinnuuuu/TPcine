@@ -1,0 +1,47 @@
+<div class="contenedor">
+    @if (cargando()) {
+        <p class="estado">Cargando la cartelera…</p>
+    } @else {
+        @if (masVendidas().length) {
+        <section class="top" aria-labelledby="t-top">
+            <h1 id="t-top">Las más vendidas</h1>
+            <div class="top-grid">
+            @for (p of masVendidas(); track p.id; let i = $index) {
+                <app-tarjetas-peliculas [pelicula]="p" [rating]="ratings().get(p.id) ?? null" [puesto]="i + 1" [destacada]="true" />
+            }
+            </div>
+        </section>
+        }
+
+        <section class="catalogo" aria-labelledby="t-cartelera">
+        <h2 id="t-cartelera">Cartelera</h2>
+
+        <div class="filtros">
+            <label class="buscador">
+            <span class="sr-only">Buscar película</span>
+            <input type="search" placeholder="Buscar por nombre o género" [value]="busqueda()" (input)="busqueda.set($any($event.target).value)" />
+            </label>
+            <div class="chips" role="group" aria-label="Filtrar por género">
+            @for (g of generos(); track g.id) {
+                <button type="button" class="chip" [class.activo]="generosActivos().has(g.id)" [attr.aria-pressed]="generosActivos().has(g.id)" (click)="toggleGenero(g.id)">{{ g.nombre }}</button>
+            }
+            </div>
+        </div>
+
+        <p class="cuenta" aria-live="polite">{{ filtradas().length }} de {{ peliculas().length }} películas</p>
+
+        @if (filtradas().length) {
+            <div class="grilla">
+            @for (p of filtradas(); track p.id) {
+                <app-tarjetas-peliculas [pelicula]="p" [rating]="ratings().get(p.id) ?? null" />
+            }
+            </div>
+        } @else {
+            <div class="estado">
+            <p>Ninguna película coincide con esa búsqueda.</p>
+            <button type="button" (click)="limpiarFiltros()">Quitar filtros</button>
+            </div>
+        }
+        </section>
+    }
+</div>
